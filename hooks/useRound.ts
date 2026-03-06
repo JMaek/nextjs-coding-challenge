@@ -10,6 +10,11 @@ export function useRound() {
 	const [timeLeft, setTimeLeft] = useState<number>(0);
 	const [isLoading, setIsLoading] = useState<boolean>(true);
 	const [error, setError] = useState<string | null>(null);
+	const [isMounted, setIsMounted] = useState(false);
+
+	useEffect(() => {
+		setIsMounted(true);
+	}, []);
 
 	const fetchRound = useCallback(async () => {
 		try {
@@ -37,7 +42,7 @@ export function useRound() {
 	}, [fetchRound]);
 
 	useEffect(() => {
-		if (!round) return;
+		if (!round || !isMounted) return;
 
 		const interval = setInterval(() => {
 			const now = new Date();
@@ -55,7 +60,7 @@ export function useRound() {
 		}, FETCH_INTERVAL_MS);
 
 		return () => clearInterval(interval);
-	}, [round, fetchRound]);
+	}, [round, fetchRound, isMounted]);
 
 	return { round, timeLeft, isLoading, error };
 }
