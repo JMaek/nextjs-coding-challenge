@@ -2,6 +2,10 @@
 
 A real-time multiplayer typing competition platform built with Next.js and Supabase.
 
+## Live Demo
+
+[https://typeracer-sepia.vercel.app](https://typeracer-sepia.vercel.app)
+
 ## Tech Stack
 
 | Role                | Tool                                |
