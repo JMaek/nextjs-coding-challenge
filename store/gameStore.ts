@@ -1,7 +1,8 @@
 import { create } from "zustand";
-import { Round } from "@/types";
+import { Player, Round } from "@/types";
 
 type GameStore = {
+	player: Player | null;
 	round: Round | null;
 	wpm: number;
 	accuracy: number;
@@ -9,6 +10,7 @@ type GameStore = {
 	correctKeystrokes: number;
 	totalKeystrokes: number;
 
+	setPlayer: (player: Player) => void;
 	setRound: (round: Round) => void;
 	updateTypingStats: (
 		progress: string,
@@ -21,6 +23,7 @@ type GameStore = {
 };
 
 export const useGameStore = create<GameStore>((set) => ({
+	player: null,
 	round: null,
 	wpm: 0,
 	accuracy: 1,
@@ -28,6 +31,7 @@ export const useGameStore = create<GameStore>((set) => ({
 	correctKeystrokes: 0,
 	totalKeystrokes: 0,
 
+	setPlayer: (player) => set({ player }),
 	setRound: (round) => set({ round }),
 	updateTypingStats: (
 		progress,
