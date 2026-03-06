@@ -28,6 +28,7 @@ A real-time multiplayer typing competition platform built with Next.js and Supab
 3. Create a \`.env.local\` file in the root directory
 
 NEXT_PUBLIC_SUPABASE_URL
+
 NEXT_PUBLIC_SUPABASE_ANON_KEY
 
 4. Set up the database by running this SQL in Supabase SQL Editor:
