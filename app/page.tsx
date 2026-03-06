@@ -1,14 +1,16 @@
-import Button from "@mui/material/Button";
-import { supabase } from "../lib/supabase";
+"use client";
+import { useRound } from "../hooks/useRound";
 
-export default async function Home() {
-	const { data, error } = await supabase.from("players").select("*");
-	console.log("data:", data, "error:", error);
+export default function Home() {
+	const { round, timeLeft, isLoading, error } = useRound();
+
+	if (isLoading) return <p>Loading...</p>;
+	if (error) return <p>Error: {error}</p>;
+
 	return (
 		<div>
-			<main>
-				<Button variant="contained">Hello MUI</Button>
-			</main>
+			<p>Sentence: {round?.sentence}</p>
+			<p>Time left: {timeLeft}s</p>
 		</div>
 	);
 }
