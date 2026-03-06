@@ -2,6 +2,7 @@
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
+import { NuqsAdapter } from "nuqs/adapters/next/app";
 
 const theme = createTheme({
 	palette: {
@@ -13,7 +14,7 @@ export default function Providers({ children }: { children: React.ReactNode }) {
 	return (
 		<ThemeProvider theme={theme}>
 			<CssBaseline />
-			{children}
+			<NuqsAdapter>{children}</NuqsAdapter>
 		</ThemeProvider>
 	);
 }
